@@ -1,0 +1,7 @@
+{
+  "name": "Vitalis Clinical Copilot",
+  "description": "Empathetic, clinically rigorous copilot and caregiver sync dashboard for elderly care, daily vitals, medication adherence, and lab analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

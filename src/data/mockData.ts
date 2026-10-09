@@ -1,0 +1,225 @@
+import {
+  CaregiverContact,
+  MedicalRecord,
+  MedicationItem,
+  PatientProfile,
+  VitalMetric,
+} from '../types';
+
+export const INITIAL_PATIENT: PatientProfile = {
+  id: 'pat-savithri-01',
+  name: 'Savithri Devi',
+  age: 72,
+  gender: 'Female',
+  relationTag: 'Elderly Mother',
+  conditions: ['Type 2 Diabetes', 'Mild Hypertension'],
+  allergies: ['Penicillin (mild rash)'],
+  bloodGroup: 'B positive',
+  abhaId: '91-4829-1049-5821',
+  primaryCaregiver: 'Anand Kumar (Son)',
+  treatingPhysician: 'Dr. R. Sharma (Cardiopulmonary)',
+  avatarUrl:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDRyJ0HQGYi3ZJuOZ942M2prKGBvcDYiHJyBb4wUqBDK8Fpyw_xUOvFf3enZBGPfRGrNbkurURAXRBnE4YpEKll0UfERmijj8TN3OmhVQTyS-skMZbtMLCr0KZrenvVY8rUdU1Ji9msQAB-dGopq6iNOg3DVgtzeKHn40SiWAD32mTPFUb79KE_4rRL98DhOXwOtKvrNOFRNIHtdGbGTvIiR5mIPORJ9Uw0Zs_WUhTz7hXLQWqFs8XT3w',
+  lastSyncTime: '12 mins ago',
+};
+
+export const INITIAL_MEDICATIONS: MedicationItem[] = [
+  {
+    id: 'med-01',
+    name: 'Amlodipine 5mg',
+    dosage: '1 tablet daily',
+    timing: 'morning',
+    timeLabel: '08:00 AM • Morning',
+    instructions: 'After breakfast • For Blood Pressure',
+    purpose: 'Cardiovascular regulation and arterial relaxation',
+    status: 'taken',
+    takenAt: '08:15 AM',
+  },
+  {
+    id: 'med-02',
+    name: 'Metformin 500mg',
+    dosage: '1 tablet with meal',
+    timing: 'lunch',
+    timeLabel: '02:00 PM • Lunch',
+    instructions: 'Take with meal • Blood Sugar regulation',
+    purpose: 'Insulin sensitivity & glycemic control',
+    status: 'due',
+    dueInText: 'Due in 45m',
+  },
+  {
+    id: 'med-03',
+    name: 'Atorvastatin 10mg',
+    dosage: '1 tablet before sleep',
+    timing: 'night',
+    timeLabel: '08:30 PM • Night',
+    instructions: 'Before bedtime • Cholesterol',
+    purpose: 'Lipid stabilization & vascular protection',
+    status: 'scheduled',
+  },
+];
+
+export const INITIAL_VITALS: VitalMetric[] = [
+  {
+    id: 'vital-bp',
+    type: 'bp',
+    name: 'Blood Pressure',
+    value: '128',
+    subValue: '/82',
+    unit: 'mmHg',
+    status: 'optimal',
+    statusText: 'Normal Range',
+    lastChecked: 'Today, 8:15 AM',
+    trend: 'stable',
+    sparklineData: [134, 130, 132, 126, 129, 125, 128],
+    targetRange: 'Systolic: 110-130 / Diastolic: 70-85',
+  },
+  {
+    id: 'vital-glucose',
+    type: 'glucose',
+    name: 'Fasting Sugar',
+    value: '118',
+    unit: 'mg/dL',
+    status: 'optimal',
+    statusText: 'Stable vs Last Week',
+    lastChecked: 'Today, 7:30 AM',
+    trend: 'stable',
+    min: 70,
+    max: 180,
+    currentPercent: 62,
+    targetRange: 'Target: 100-125',
+  },
+  {
+    id: 'vital-hb',
+    type: 'hb',
+    name: 'Hemoglobin',
+    value: '10.2',
+    unit: 'g/dL',
+    status: 'attention',
+    statusText: 'Low (Ref: 12.0 - 15.0)',
+    lastChecked: 'Feb 24, 2025 (Apollo Lab)',
+    trend: 'down',
+    min: 8,
+    max: 16,
+    currentPercent: 40,
+    targetRange: 'Target: 12.0 - 15.0',
+  },
+  {
+    id: 'vital-spo2',
+    type: 'spo2',
+    name: 'Oxygen Saturation',
+    value: '98',
+    unit: '%',
+    status: 'optimal',
+    statusText: 'Excellent O2',
+    lastChecked: 'Today, 8:15 AM',
+    trend: 'stable',
+    targetRange: '95% - 100%',
+  },
+];
+
+export const INITIAL_RECORDS: MedicalRecord[] = [
+  {
+    id: 'rec-01',
+    title: 'Complete Blood Count (CBC)',
+    category: 'lab_report',
+    provider: 'Apollo Diagnostics',
+    doctorName: 'Dr. Preeti Verma, MD Path',
+    date: 'Feb 24, 2025',
+    status: 'review_needed',
+    statusLabel: 'Review Needed',
+    telemetryVerified: true,
+    highlightMetric: {
+      name: 'Hemoglobin',
+      value: '10.2 g/dL',
+      reference: 'Standard reference: 12.0 - 15.0 g/dL',
+      clinicalNote: 'Mild iron-deficiency pattern observed. MCV at 78 fL slightly microcytic.',
+      isAbnormal: true,
+    },
+    summary:
+      'Apollo Diagnostics Complete Hemogram indicated low hemoglobin (10.2 g/dL) and mild microcytosis. Platelet count (240,000/mcL) and total WBC count (6,800/mcL) are well within normal clinical limits.',
+    aiQuestionsForDoctor: [
+      'Should we initiate low-dose oral iron supplementation (e.g., Ferrous Ascorbate) with food?',
+      'Does the low hemoglobin interact with or explain her mild afternoon tiredness?',
+      'When should a follow-up CBC panel or serum ferritin test be repeated?',
+    ],
+    fileSize: '1.4 MB',
+    pages: 2,
+  },
+  {
+    id: 'rec-02',
+    title: 'Dr. R. Sharma Visit Note',
+    category: 'consultation',
+    provider: 'Cardiopulmonary Care Center',
+    doctorName: 'Dr. R. Sharma, MD, DM (Cardiology)',
+    date: 'Feb 18, 2025',
+    status: 'verified',
+    statusLabel: 'Verified by Anand',
+    telemetryVerified: true,
+    summary:
+      '3 medicines successfully parsed and mapped into daily schedule. Regular BP monitoring advised twice daily. Resting ECG confirmed normal sinus rhythm with no ST changes.',
+    aiQuestionsForDoctor: [
+      'Is the morning BP target of 128/82 mmHg sufficient or should we aim for lower systolic?',
+      'Should Metformin timing be adjusted if lunch is delayed on fasting days?',
+    ],
+    fileSize: '840 KB',
+    pages: 1,
+  },
+  {
+    id: 'rec-03',
+    title: 'Lipid Profile & Liver Panel',
+    category: 'lab_report',
+    provider: 'Apollo Diagnostics',
+    doctorName: 'Dr. Preeti Verma, MD Path',
+    date: 'Jan 15, 2025',
+    status: 'verified',
+    statusLabel: 'Normal',
+    telemetryVerified: true,
+    summary:
+      'Total Cholesterol: 168 mg/dL. LDL: 88 mg/dL (well controlled on Atorvastatin 10mg). SGOT/SGPT enzymes normal.',
+    aiQuestionsForDoctor: [
+      'Is the current Atorvastatin 10mg maintenance dosage to be continued through the year?',
+    ],
+    fileSize: '1.1 MB',
+    pages: 2,
+  },
+];
+
+export const CAREGIVERS: CaregiverContact[] = [
+  {
+    id: 'cg-01',
+    name: 'Anand Kumar',
+    relation: 'Son (Primary Caregiver)',
+    role: 'Primary Caregiver',
+    phone: '+91 98490 28190',
+    activeStatus: 'Active Now',
+    avatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'cg-02',
+    name: 'Sunita Devi',
+    relation: 'Daughter',
+    role: 'Family Observer',
+    phone: '+91 94401 55219',
+    activeStatus: '10 mins ago',
+    avatar:
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80',
+  },
+  {
+    id: 'cg-03',
+    name: 'Dr. R. Sharma',
+    relation: 'Consulting Cardiologist',
+    role: 'Consulting Physician',
+    phone: '+91 99880 11223',
+    activeStatus: 'On Call',
+    avatar:
+      'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=120&auto=format&fit=crop&q=80',
+    isDoctor: true,
+  },
+];
+
+export const AUDIO_SUMMARIES = {
+  en: "Good afternoon. Here is Savithri Devi's health briefing for today. Morning Amlodipine 5mg was successfully taken at 8:15 AM. Her Blood Pressure is normal at 128 over 82, and Fasting Sugar is stable at 118 mg/dL. You have one upcoming medicine: Metformin 500mg due with lunch in 45 minutes. Additionally, the recent Apollo CBC lab report shows mild iron deficiency with Hemoglobin at 10.2. Three questions are prepared for your next visit with Doctor Sharma.",
+  te: "నమస్కారం. సవిత్రి దేవి గారి నేటి ఆరోగ్య సమాచారం: ఉదయం రక్తపోటు మందు ఆమ్లోడిపైన్ 5mg సమయానికి తీసుకున్నారు. రక్తపోటు 128/82 తో సాధారణంగా ఉంది. ఫాస్టింగ్ షుగర్ 118 mg/dL వద్ద స్థిరంగా ఉంది. మధ్యాహ్నం 2 గంటలకు లంచ్‌తో పాటు మెట్‌ఫార్మిన్ 500mg తీసుకోవలసి ఉంది. అపోలో ల్యాబ్ రిపోర్టులో హిమోగ్లోబిన్ 10.2 గా కొద్దిగా తక్కువగా ఉన్నట్లు నమోదైంది. డాక్టర్ శర్మ గారి కోసం 3 ప్రశ్నలు సిద్ధం చేయబడ్డాయి.",
+  hi: "नमस्ते। सावित्री देवी जी का आज का स्वास्थ्य विवरण: सुबह की ब्लड प्रेशर की दवा एम्लोडिपिन 5mg ली जा चुकी है। उनका बीपी 128/82 पर सामान्य है और ब्लड शुगर 118 mg/dL पर स्थिर है। दोपहर 2:00 बजे भोजन के साथ मेटफॉर्मिन 500mg लेनी है। अपोलो की नई सीबीसी रिपोर्ट में हीमोग्लोबिन 10.2 g/dL थोड़ा कम दर्ज हुआ है। डॉक्टर शर्मा जी के लिए 3 प्रश्न तैयार किए गए हैं।",
+};

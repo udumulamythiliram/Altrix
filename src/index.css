@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--bg, #F8F7F4);
+    color: var(--ink, #1A1A1A);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Variation 1 Root CSS Variables */
+:root {
+  --bg: #F8F7F4;
+  --ink: #1A1A1A;
+  --accent: #B8860B;
+  --color-primary: #1A1A1A;
+  --color-primary-container: #2A2A2A;
+  --color-primary-fixed: #E8E5DD;
+  --bg-main: #F8F7F4;
+  --bg-card-lowest: #FFFFFF;
+  --bg-card-low: #F4F2EC;
+  --bg-card-mid: #EBE8E0;
+  --bg-card-high: #E2DFD6;
+  --text-main: #1A1A1A;
+  --text-muted: #5A5852;
+  --border-subtle: rgba(26, 26, 26, 0.12);
+  --radius-2xl: 0.35rem;
+  --radius-xl: 0.25rem;
+  --radius-lg: 0.2rem;
+  --radius-def: 0.15rem;
+}
+
+.dark {
+  --bg: #141413;
+  --ink: #F5F3EF;
+  --accent: #D4AF37;
+  --color-primary: #F5F3EF;
+  --color-primary-container: #E2DFD6;
+  --color-primary-fixed: #2A2825;
+  --bg-main: #141413;
+  --bg-card-lowest: #1C1B19;
+  --bg-card-low: #22211E;
+  --bg-card-mid: #2B2A26;
+  --bg-card-high: #383631;
+  --text-main: #F5F3EF;
+  --text-muted: #A3A099;
+  --border-subtle: rgba(245, 243, 239, 0.14);
+}
+
+/* Typography styles for Variation 1 */
+h1, h2, h3, h4, .font-serif-garamond {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+}
+
+/* Card & Button Styles per Variation 1 */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: var(--bg-card-lowest, #FFFFFF);
+  transition: all 0.2s ease;
+}
+.dark .card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.08em;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-editorial {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  border: 1px solid var(--ink);
+}
+.btn-editorial:hover {
+  opacity: 0.9;
+}
+.btn-editorial:active {
+  transform: scale(0.98);
+}
+
+.btn-editorial-outline {
+  background: transparent;
+  color: var(--ink);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border: 1px solid var(--ink);
+  transition: background 0.15s ease;
+}
+.btn-editorial-outline:hover {
+  background: rgba(26, 26, 26, 0.05);
+}
+
+/* Material finishes tuned to editorial */
+.material-flat .theme-card {
+  background-color: var(--bg-card-lowest) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: none !important;
+}
+
+.material-glass .theme-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+.dark.material-glass .theme-card {
+  background: rgba(28, 27, 25, 0.85) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.material-neumorphic .theme-card {
+  background: var(--bg-card-lowest) !important;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05), -2px -2px 8px rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.material-crystal .theme-card {
+  position: relative;
+  background: var(--bg-card-lowest) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04) !important;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: 'Space Mono', monospace;
+}
+
+
